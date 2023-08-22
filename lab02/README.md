@@ -1,6 +1,6 @@
 # Equipe Data Miners
 
-# Subgrupo B
+# Subgrupo A
 
 - Lucio Bueno Vieira Junior - 221029
 - Guilherme Sampaio Cintra - 248313
