@@ -14,12 +14,32 @@ _Diagrama UML Original_
 
 ## Mapeamento para o Modelo Relacional
 
-> Coloque aqui o modelo relacional que mapeia o modelo ER (original ou revisado). Nesse modelo deve constar o esquema das relações, com as chaves primárias e estrangeiras. A especificação de tipos de atributos é opcional.
-
-> Exemplo de modelo lógico relacional
-
 ```
-PESSOA(_Código_, Nome, Telefone)
-ARMÁRIO(_Código_, Tamanho, Ocupante)
-  Ocupante chave estrangeira -> PESSOA(Código)
+INFO_NUTRICIONAL(_ID_, Calorias, Proteína, Carboidrato, Sódio, Gordura_total, Gordura_saturada, Gordura_trans)
+
+INGREDIENTE(_Nome_,Info_nutricional)
+  Info_nutricional chave estrangeira -> INFO_NUTRICIONAL(ID)
+
+INGREDIENTE_CONTEM(_Ingrediente_pai_, _Ingrediente_filho_)
+  Ingrediente_pai chave estrangeira -> INGREDIENTE(Nome)
+  Ingrediente_filho chave estrangeira -> INGREDIENTE(Nome)
+
+PORÇÃO(_Nome_, Tipo, vezes_disponível, vezes_selecionada)
+
+PORÇÃO_INGREDIENTES(_Porção_, _Ingrediente_)
+  Porção chave estrangeira -> PORÇÃO(Nome)
+  Ingrediente chave estrangeira -> INGREDIENTE(Nome)
+
+CARDAPIO(_Data_, Período, Perfil_nutricional)
+  Perfil_nutricional chave estrangeira -> INFO_NUTRICIONAL(ID)
+
+CARDAPIO_INGREDIENTES(_Cardapio_, _Ingrediente_)
+  Porção chave estrangeira -> PORÇÃO(Nome)
+  Ingrediente chave estrangeira -> INGREDIENTE(Nome)
+
+ALUNO(_RA_, Nome)
+
+ALUNO_CARDAPIO(_Aluno_, _Cardapio_)
+  Aluno chave estrangeira -> ALUNO(RA)
+  Cardapio chave estrangeira -> CARDAPIO(Data, Período)
 ```
